@@ -1,0 +1,844 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.adportEmployeehub {
+  overflow: auto;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+.firstDiv {
+  width: 53.563rem;
+  height: 27.438rem;
+  position: relative
+}
+
+.secondDiv {
+  left: 0px;
+  top: 0.25rem;
+  position: absolute;
+  color: #218BC9;
+  font-size: 1.5rem;
+  font-family: ADPortsGroup;
+  font-weight: 700;
+  line-height: 1.625rem;
+  word-wrap: break-word
+}
+
+.thirdDiv {
+  width: 53.563rem;
+  height: 24.188rem;
+  left: 0px;
+  top: 3.25rem;
+  position: absolute;
+  background: white;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px #CECECE solid
+}
+
+.fourDiv {
+  left: 1.375rem;
+  top: 4.625rem;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.25rem;
+  display: inline-flex
+}
+
+.fiveDiv {
+  width: 11.063rem;
+  height: 2.625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  display: flex
+}
+
+.sixDiv {
+  width: 11.25rem;
+  height: 2.625;
+  justify-content: center;
+  align-items: center;
+  gap: 0.438rem;
+  display: flex
+}
+
+.sevenDiv {
+  width: 9.438rem;
+  color: #218BC9;
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.eightDiv {
+  width: 13.25rem;
+  height: 24.188rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  left: -0.938rem;
+  top: 3.25rem;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex
+}
+
+.nineDiv {
+  width: 11.25rem;
+  height: 6.002rem;
+  position: relative
+}
+
+.tenDiv {
+  width: 5.922rem;
+  height: 3.398rem;
+  left: 0.784rem;
+  top: 1.586rem;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  display: inline-flex
+}
+
+.elevenDiv {
+  width: 1.301rem;
+  height: 1.553rem
+}
+
+.tweleveDiv {
+  width: 11.25rem;
+  height: 6.002rem;
+  position: relative
+}
+
+.thirteenDiv {
+  width: 9.708rem;
+  height: 3.398rem;
+  left: 0.784rem;
+  top: 21.586rem;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  display: inline-flex
+}
+
+.fourteenDiv {
+  width: 11.25rem;
+  height: 6.002rem;
+  position: relative
+}
+
+.fifteenDiv {
+  width: 11.25rem;
+  height: 6.002rem;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: #EEEEEE
+}
+
+.sixteenDiv {
+  width: 7.332rem;
+  height: 3.398rem;
+  left: 0.784rem;
+  top: 1.586rem;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  display: inline-flex
+}
+
+.seventeenDiv {
+  width: 1.688rem;
+  height: 1.688rem
+}
+
+.eighteenDiv {
+  color: #218BC9;
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 1.839rem;
+  word-wrap: break-word
+}
+
+.nineteenDiv {
+  width: 11.25rem;
+  height: 6.002rem;
+  position: relative
+}
+
+.twentyDiv {
+  width: 11.25rem;
+  height: 6.002rem;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: #EEEEEE
+}
+
+.twentyoneDiv {
+  width: 5.205rem;
+  height: 3.398rem;
+  left: 0.784rem;
+  top: 1.586rem;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  display: inline-flex
+}
+
+.twentytwoDiv {
+  width: 1.688rem;
+  height: 1.688rem
+}
+
+.twentythreeDiv {
+  color: #218BC9;
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 1.839rem;
+  word-wrap: break-word
+}
+
+.twentyfourDiv {
+  width: 53.563rem;
+  height: 27.438rem;
+  left: 0px;
+  top: 0px;
+  position: absolute
+}
+
+.twentyfiveDiv {
+  width: 53.563rem;
+  height: 24.188rem;
+  left: 0px;
+  top: 3.25rem;
+  position: absolute;
+  background: white;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px #CECECE solid
+}
+
+.twentysixDiv {
+  left: 14rem;
+  top: 9.063rem;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.063rem;
+  display: inline-flex
+}
+
+.twentysevenDiv {
+  width: 29.47px;
+  height: 14.78px;
+  position: relative;
+  transform: rotate(-90deg);
+  transform-origin: 0 0
+}
+
+.twentyeightDiv {
+  width: 1.842rem;
+  height: 0.924rem;
+  left: 0px;
+  top: -0.788rem;
+  position: absolute;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+  background: #D9D9D6
+}
+
+.twentynineDiv {
+  width: 1.054rem;
+  height: 0.924rem;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+  background: #D9D9D6
+}
+
+.thirtyDiv {
+  padding: 0.625rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.25rem;
+  display: flex
+}
+
+.thirtyoneDiv {
+  padding: 0.938rem;
+  background: white;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  display: inline-flex
+}
+
+.thirtytwoDiv {
+  width: 6.505rem;
+  height: 6.505rem;
+  position: relative
+}
+
+.thirtythreeDiv {
+  width: 6.505rem;
+  height: 6.505rem;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: #218BC9;
+  border-radius: 624.938rem
+}
+
+.thirtyfourDiv {
+  width: 6.18rem;
+  height: 6.18rem;
+  left: 0.163rem;
+  top: 0.163rem;
+  position: absolute;
+  background: #B6B6B6;
+  border-radius: 624.938rem
+}
+
+.thirtyfiveDiv {
+  width: 8.75rem;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.20);
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.thirtysixDiv {
+  text-align: center;
+  color: #63666A;
+  font-size: 0.5rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.036;
+  word-wrap: break-word
+}
+
+.thirtysevenDiv {
+  width: 7.688rem;
+  padding-left: 0.577rem;
+  padding-right: 0.577rem;
+  padding-top: 0.563rem;
+  padding-bottom: 0.563rem;
+  background: #218BC9;
+  justify-content: center;
+  align-items: center;
+  gap: 0.524rem;
+  display: inline-flex
+}
+
+.thirtyeightDiv {
+  width: 4.938rem;
+  height: 1.625rem;
+  text-align: right;
+  color: white;
+  font-size: 14px;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.thirtynineDiv {
+  width: 0.5rem;
+  height: 0.875rem;
+  transform: rotate(180deg);
+  transform-origin: 0 0;
+  background: white
+}
+
+.fourtyDiv {
+  padding: 0.938rem;
+  background: white;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  display: inline-flex
+}
+
+.fourtyoneDiv {
+  width: 104.08px;
+  height: 104.08px;
+  position: relative
+}
+
+.fourtytwoDiv {
+  width: 6.505rem;
+  height: 6.505rem;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: #218BC9;
+  border-radius: 624.938rem
+}
+
+.fourtythreeDiv {
+  width: 6.18rem;
+  height: 6.18rem;
+  left: 0.163rem;
+  top: 0.163rem;
+  position: absolute;
+  background: #B6B6B6;
+  border-radius: 624.938rem
+}
+
+.fourtyfourDiv {
+  width: 6.5rem;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.20);
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.fourtyfiveDiv {
+  text-align: center;
+  color: #63666A;
+  font-size: 0.5rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.fourtysixDiv {
+  width: 7.688rem;
+  padding-left: 0.577rem;
+  padding-right: 0.577rem;
+  padding-top: 0.563rem;
+  padding-bottom: 0.563rem;
+  background: #218BC9;
+  justify-content: center;
+  align-items: center;
+  gap: 0.524rem;
+  display: inline-flex
+}
+
+.fourtysevenDiv {
+  width: 4.938rem;
+  height: 1.625rem;
+  text-align: right;
+  color: white;
+  font-size: 0.875rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.fourtyeightDiv {
+  width: 0.5rem;
+  height: 0.875rem;
+  transform: rotate(180deg);
+  transform-origin: 0 0;
+  background: white
+}
+
+.fourtynineDiv {
+  padding: 0.938rem;
+  background: white;
+  flex-direction: column;
+  justify-content:
+    flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  display: inline-flex
+}
+
+.fiftyDiv {
+  width: 6.505rem;
+  height: 6.505rem;
+  position: relative
+}
+
+.fiftyoneDiv {
+  width: 6.505rem;
+  height: 6.505rem;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: #218BC9;
+  border-radius: 624.938rem
+}
+
+.fiftytwoDiv {
+  width: 6.18rem;
+  height: 6.18rem;
+  left: 0.163rem;
+  top: 0.163rem;
+  position: absolute;
+  background: #B6B6B6;
+  border-radius: 624.938rem
+}
+
+.fiftythreeDiv {
+  width: 8.75rem;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.20);
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.fiftyfourDiv {
+  text-align: center;
+  color: #63666A;
+  font-size: 0.5rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.fiftyfiveDiv {
+  width: 7.688rem;
+  padding-left: 0.577rem;
+  padding-right: 0.577rem;
+  padding-top: 0.563rem;
+  padding-bottom: 0.563rem;
+  background: #218BC9;
+  justify-content: center;
+  align-items: center;
+  gap: 0.524rem;
+  display: inline-flex
+}
+
+.fiftysixDiv {
+  width: 4.938rem;
+  height: 1.625rem;
+  text-align: right;
+  color: white;
+  font-size: 0.875rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.fiftysevenDiv {
+  width: 0.5rem;
+  height: 0.875rem;
+  transform: rotate(180deg);
+  transform-origin: 0 0;
+  background: white
+}
+
+.fiftyeightDiv {
+  width: 1.842rem;
+  height: 0.924rem;
+  position: relative;
+  transform: rotate(90deg);
+  transform-origin: 0 0
+}
+
+.fiftynineDiv {
+  width: 1.054rem;
+  height: 10.924rem;
+  left: -0px;
+  top: 0.788rem;
+  position: absolute;
+  transform: rotate(90deg);
+  transform-origin: 0 0;
+  background: #D9D9D6
+}
+
+.sixtyDiv {
+  width: 1.054rem;
+  height: 0.924rem;
+  left: -0px;
+  top: -0px;
+  position: absolute;
+  transform: rotate(90deg);
+  transform-origin: 0 0;
+  background: #D9D9D6
+}
+
+.sixtyoneDiv {
+  width: 12rem;
+  height: 24.063rem;
+  left: 0.063rem;
+  top: 3.313rem;
+  position: absolute;
+  background: #EEEEEE;
+  border-right: 0.063rem #CECECE solid
+}
+
+.sixtytwoDiv {
+  width: 7.188rem;
+  height: 1.438rem;
+  left: 2.375rem;
+  top: 5.125rem;
+  position: absolute
+}
+
+.sixtythreeDiv {
+  color: #2D3955;
+  font-size: 0.89rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  line-height: 1.929rem;
+  word-wrap: break-word
+}
+
+.sixtyfourDiv {
+  color: #218BC9;
+  font-size: 0.89rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  line-height: 1.929rem;
+  word-wrap: break-word
+}
+
+.sixtyfiveDiv {
+  width: 11.938rem;
+  height: 3.625rem;
+  left: 0.063rem;
+  top: 8.313rem;
+  position: absolute;
+  background: #218BC9
+}
+
+.sixtysixDiv {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  left: 1.563rem;
+  top: 7.688rem;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  display: inline-flex
+}
+
+.sixtysevenDiv {
+  width: 9.063rem;
+  height: 3.375rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  display: inline-flex
+}
+
+.sixtyeightDiv {
+  width: 1.047rem;
+  height: 1.25rem
+}
+
+.sixtynineDiv {
+  width: 3.688rem;
+  height: 1.438rem;
+  color: white;
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 1.839rem;
+  word-wrap: break-word
+}
+
+.seventyDiv {
+  width: 9.063rem;
+  height: 3.375rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  display: inline-flex
+}
+.seventyDiv:hover{
+  background: #218BC9;
+}
+.seventyoneDiv {
+  width: 1.087rem;
+  height: 1.328rem;
+  position: relative
+}
+
+.seventytwoDIv {
+  width: 1.25rem;
+  height: 1.528rem;
+  left: 0px;
+  top: -0.1rem;
+  position: absolute
+}
+
+.seventythreeDiv {
+  width: 0.539rem;
+  height: 0.683rem;
+  left: 0.036rem;
+  top: 0.827rem;
+  position: absolute;
+  background: #2D3955
+}
+
+.seventyfourDiv {
+  width: 7.375rem;
+  height: 1.438rem;
+  color: #2D3955;
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 1.839rem;
+  word-wrap: break-word
+}
+
+.seventyfiveDiv {
+  width: 9.063rem;
+  height: 3.375rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  display: inline-flex
+}
+
+.seventysixDiv {
+  width: 1.25rem;
+  height: 1.125rem;
+  position: relative
+}
+
+.seventysevenDiv {
+  width: 0.369rem;
+  height: 0.415rem;
+  left: 0.242rem;
+  top: 0px;
+  position: absolute;
+  background: #2D3955
+}
+
+.seventyeightDiv {
+  width: 0.302rem;
+  height: 0.339rem;
+  left: 0.744rem;
+  top: 0.139rem;
+  position: absolute;
+  background: #2D3955
+}
+
+.seventynineDiv {
+  width: 0.699rem;
+  height: 0.509rem;
+  left: 0.551rem;
+  top: 0.616rem;
+  position: absolute;
+  background: #2D3955
+}
+
+.eightyDiv {
+  width: 0.575rem;
+  height: 0.575rem;
+  left: 0px;
+  top: 0.548rem;
+  position: absolute;
+  background: #2D3955
+}
+
+.eightyoneDiv {
+  width: 5.25rem;
+  height: 1.438rem;
+  color: #2D3955;
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 1.839rem;
+  word-wrap: break-word
+}
+
+.eightytwoDiv {
+  width: 9.063rem;
+  height: 3.375rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  display: inline-flex
+}
+
+.eightythreeDiv {
+  width: 1.25rem;
+  height: 1.25rem
+}
+
+.eightyfourDiv {
+  width: 3.688rem;
+  height: 1.438rem;
+  color: #2D3955;
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 1.839rem;
+  word-wrap: break-word
+}
+
+.eightyfiveDiv {
+  width: 10.625rem;
+  height: 2.625rem;
+  left: 41rem;
+  top: 4.563rem;
+  position: absolute;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  gap: 0.438rem;
+  display: inline-flex
+}
+
+.eightysixDiv {
+  color: #218BC9;
+  font-size: 0.75rem;
+  font-family: ADPortsGroup;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.036rem;
+  word-wrap: break-word
+}
+
+.eightysevenDiv {
+  width: 0.438rem;
+  height: 0.75rem;
+  transform: rotate(180deg);
+  transform-origin: 0 0;
+  background: #218BC9
+}

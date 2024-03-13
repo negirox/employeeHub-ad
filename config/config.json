@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "adport-employeehub-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/adportEmployeehub/AdportEmployeehubWebPart.js",
+          "manifest": "./src/webparts/adportEmployeehub/AdportEmployeehubWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AdportEmployeehubWebPartStrings": "lib/webparts/adportEmployeehub/loc/{locale}.js"
+  }
+}

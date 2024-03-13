@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.19.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "adports-emphub",
+    "libraryId": "64787f29-b35c-4b23-820a-35645d121e8a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "adports-emphub",
+    "solutionShortDescription": "adports-emphub description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

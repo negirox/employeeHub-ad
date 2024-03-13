@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "adports-emphub-client-side-solution",
+    "id": "64787f29-b35c-4b23-820a-35645d121e8a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "adports-emphub description"
+      },
+      "longDescription": {
+        "default": "adports-emphub description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "adports-emphub Feature",
+        "description": "The feature that activates elements of the adports-emphub solution.",
+        "id": "e645dd8b-7db5-4182-8ed7-f76a38ee4994",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/adports-emphub.sppkg"
+  }
+}
