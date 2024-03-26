@@ -4,7 +4,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   IPropertyPaneDropdownOption,
-  PropertyPaneDropdown
+  PropertyPaneDropdown,
+  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'AdportEmployeehubWebPartStrings';
@@ -15,6 +16,9 @@ import { ISPHelper } from '../../helpers/ISPhelper';
 import { SPHelpers } from '../../helpers/SPhelpers';
 export interface IAdportEmployeehubWebPartProps {
   userMasterList: string;
+  noOfDaysForBirthday:number,
+  noOfDaysForAnniversary:number,
+  noOfDaysForNewJoiners:number,
 }
 
 export default class AdportEmployeehubWebPart extends BaseClientSideWebPart<IAdportEmployeehubWebPartProps> {
@@ -25,8 +29,11 @@ export default class AdportEmployeehubWebPart extends BaseClientSideWebPart<IAdp
     const element: React.ReactElement<IAdportEmployeehubProps> = React.createElement(
       AdportEmployeehub,
       {
-        userMasterList: this.properties.userMasterList,
-        webpartContext:this.context
+        userMasterList: this.properties.userMasterList ?? 'User Master',
+        webpartContext:this.context,
+        noOfDaysForBirthday:this.properties.noOfDaysForBirthday ?? 7,
+        noOfDaysForAnniversary:this.properties.noOfDaysForAnniversary ?? 7,
+        noOfDaysForNewJoiners:this.properties.noOfDaysForNewJoiners ?? 15,
       }
     );
 
@@ -84,6 +91,15 @@ export default class AdportEmployeehubWebPart extends BaseClientSideWebPart<IAdp
                 PropertyPaneDropdown('userMasterList', {
                   label: 'Select User Master list',
                   options: [...this.dropdownOptions]
+                }),
+                PropertyPaneTextField('noOfDaysForBirthday',{
+                  label:'Enter last no of days for birthday'
+                }),
+                PropertyPaneTextField('noOfDaysForAnniversary',{
+                  label:'Enter last no of days for anniversary'
+                }),
+                PropertyPaneTextField('noOfDaysForNewJoiners',{
+                  label:'Enter last no of days for new joiners'
                 })
               ]
             }

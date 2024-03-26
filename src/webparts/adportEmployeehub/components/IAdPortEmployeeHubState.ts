@@ -8,4 +8,5 @@ export interface IAdportEmployeeHubState{
     birthdays:UserMaster[];
     anniverSaries:UserMaster[];
     newJoiners:UserMaster[];
+    renderData:Array<Array<UserMaster>>;
 }

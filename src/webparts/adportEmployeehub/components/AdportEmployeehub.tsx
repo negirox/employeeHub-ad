@@ -3,9 +3,30 @@ import styles from './AdportEmployeehub.module.scss';
 import { IAdportEmployeehubProps } from './IAdportEmployeehubProps';
 import { IAdportEmployeeHubState } from './IAdPortEmployeeHubState';
 import { ISPHelper } from '../../../helpers/ISPhelper';
-import { UserMaster, UserMasterResponse, UserProfileProps } from '../../../model/SPResponse';
+import { UserMaster, UserMasterResponse } from '../../../model/SPResponse';
 import { SPHelpers } from '../../../helpers/SPhelpers';
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Utility } from '../../../helpers/Utility';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
+/* const EmployeeHubCarousel = () => {
+  return (
+    <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://example.com/slide1.jpg"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>First Slide</h3>
+          <p>Some content for the first slide.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
 
+    </Carousel>
+  );
+}; */
 export default class AdportEmployeehub extends React.Component<IAdportEmployeehubProps, IAdportEmployeeHubState> {
 
   private _spHelper: ISPHelper;
@@ -16,6 +37,7 @@ export default class AdportEmployeehub extends React.Component<IAdportEmployeehu
       loading: true,
       isAnniversary: false,
       isBirthday: false,
+      renderData: [],
       anniverSaries: [],
       birthdays: [],
       newJoiners: []
@@ -23,181 +45,205 @@ export default class AdportEmployeehub extends React.Component<IAdportEmployeehu
     this._spHelper = new SPHelpers(this.props.webpartContext.spHttpClient);
   }
   async componentDidMount(): Promise<void> {
-    const userMasterData: UserMasterResponse = await this._spHelper.getUserMaster(this.props, this.props.webpartContext.pageContext.user.email, 1);
+    const ConfigUrl = `${this.props.webpartContext.pageContext.web.absoluteUrl}/_api/web/lists/GetByTitle('${this.props.userMasterList}')/Items?$top=4999`;
+    const userMasterData: UserMasterResponse = await this._spHelper.getListData(ConfigUrl);
     console.log(userMasterData);
-    const userPropertiesURL = this.props.webpartContext.pageContext.web.absoluteUrl + `/_api/SP.UserProfiles.PeopleManager/GetMyProperties`;
-    const userProperties: UserProfileProps = await this._spHelper.getListData(userPropertiesURL);
-    console.log(userProperties);
     this.RenderUserData(userMasterData);
   }
   private RenderUserData(userMasterData: UserMasterResponse): void {
-    if (userMasterData.value.length > 0) {
-      const birthDays: UserMaster[] = [];
-      const anniverSaries: UserMaster[] = [];
-      const newJoiners: UserMaster[] = [];
-      userMasterData.value.forEach(respo => {
-        const isAnniversary = this.CheckDate(respo.DateOfJoining);
-        const isBirthday = this.CheckDate(respo.DateOfBirth);
-        const isNewJoiners = this.CheckNewJoiners(respo.DateOfJoining);
-        if (isAnniversary) {
-          anniverSaries.push({ ...respo });
+    if (userMasterData.value.length === 0) {
+        return;
+    }
+
+    const birthDays: UserMaster[] = [];
+    const anniversaries: UserMaster[] = [];
+    const newJoiners: UserMaster[] = [];
+
+    userMasterData.value.forEach(respo => {
+        if (this.CheckDate(respo.DateOfJoining, this.props.noOfDaysForAnniversary)) {
+            anniversaries.push({ ...respo });
         }
-        if (isBirthday) {
-          birthDays.push({ ...respo });
+        if (this.CheckDate(respo.DateOfBirth, this.props.noOfDaysForBirthday)) {
+            birthDays.push({ ...respo });
         }
-        if (isNewJoiners) {
-          newJoiners.push({ ...respo });
+        if (this.CheckNewJoiners(respo.DateOfJoining, this.props.noOfDaysForNewJoiners)) {
+            newJoiners.push({ ...respo });
         }
-      });
-      this.setState({
-        anniverSaries: anniverSaries,
+    });
+
+    const renderData = Utility.chunkArray([...birthDays], 3);
+    this.setState({
+        anniverSaries: anniversaries,
         newJoiners: newJoiners,
         birthdays: birthDays,
+        renderData: renderData,
         loading: false
-      })
-    }
-  }
-  private CheckNewJoiners(date: string): boolean {
+    });
+
+    setTimeout(() => {
+        const element = document.getElementById('BirthDays');
+        if (element) {
+            element.parentElement.style.background = '#218BC9';
+            element.style.color = 'white';
+        }
+    }, 600);
+}
+
+  private CheckDate(date: string, lastDays: number): boolean {
     const currentDate = new Date();
+    currentDate.setFullYear(0);
     currentDate.setHours(0, 0, 0, 0);
     const fifteenDaysAgo = new Date();
-    fifteenDaysAgo.setDate(currentDate.getDate() - 15);
+    fifteenDaysAgo.setDate(currentDate.getDate() - lastDays);
     fifteenDaysAgo.setHours(0, 0, 0, 0);
+    fifteenDaysAgo.setFullYear(0);
     const d = new Date(date);
     d.setHours(0, 0, 0, 0);
+    d.setFullYear(0);
     return (d.getTime() >= fifteenDaysAgo.getTime() && d.getTime() <= currentDate.getTime());
+
+    
   }
-  private CheckDate(date: string): boolean {
+  private CheckNewJoiners(date: string, lastDays: number): boolean {
     const currentDate = new Date();
-    currentDate.setHours(0, 0, 0, 0);
+    const fifteenDaysAgo = new Date();
+    fifteenDaysAgo.setDate(currentDate.getDate() - lastDays);
     const d = new Date(date);
-    d.setHours(0, 0, 0, 0);
-    return (d.getDate() === currentDate.getDate()) && (d.getMonth() === currentDate.getMonth());
+    return (d >= fifteenDaysAgo && d <= currentDate);
   }
+  /*   private CheckDate(date: string): boolean {
+      const currentDate = new Date();
+      currentDate.setHours(0, 0, 0, 0);
+      const d = new Date(date);
+      d.setHours(0, 0, 0, 0);
+      return (d.getDate() === currentDate.getDate()) && (d.getMonth() === currentDate.getMonth());
+    } */
+    private ShowSlide(slideName: string, divId: string, anotherDivIds: string[]): void {
+      // Update current slide styles
+      const currentElement = document.getElementById(divId);
+      currentElement.parentElement.style.background = '#218BC9';
+      currentElement.style.color = 'white';
+  
+      // Reset styles for other slides
+      for (const id of anotherDivIds) {
+          const otherElement = document.getElementById(id);
+          otherElement.parentElement.style.background = 'lightgrey';
+          otherElement.style.color = 'black';
+      }
+  
+      // Set state based on slideName
+      let renderData = [];
+      switch (slideName) {
+          case 'BirthDays':
+              renderData = Utility.chunkArray([...this.state.birthdays], 3);
+              break;
+          case 'WorkAnniverSary':
+              renderData = Utility.chunkArray([...this.state.anniverSaries], 3);
+              break;
+          case 'NewJoiners':
+              renderData = Utility.chunkArray([...this.state.newJoiners], 3);
+              break;
+          default:
+              break;
+      }
+  
+      this.setState({ renderData });
+  }
+  
   public render(): React.ReactElement<IAdportEmployeehubProps> {
     return (
       <section className={styles.adportEmployeehub}>
-        <div className={styles.firstDiv}>
-          <div className={styles.secondDiv}>
-            Employee Hub</div>
-          <div className={styles.thirdDiv}>
-          </div>
-          <div className={styles.fourDiv}>
-            <div className={styles.fiveDiv}>
-              <div className={styles.sixDiv}>
-                <div className={styles.sevenDiv}>
-                  Share your happiness </div>
+        {
+          this.state.loading &&
+          <Spinner label="Loading Employee Hub..." size={SpinnerSize.large} />
+        }
+        {
+          !this.state.loading && <div>
+            <div className={styles.firstDiv}>
+              <div className={styles.secondDiv}>
+                Employee Hub</div>
+              <div className={styles.thirdDiv}>
+              </div>
+              <div className={styles.eightDiv}>
+              </div>
 
-              </div>
-            </div>
-          </div>
-          <div className={styles.eightDiv}>
-          </div>
-          <div className={styles.twentyfourDiv}>
-            <div className={styles.twentyfiveDiv}>
-            </div>
-            <div className={styles.twentysixDiv}>
-              <div className={styles.twentysevenDiv}>
-                <div className={styles.twentynineDiv}>
-                </div>
-              </div>
-              <div className={styles.thirtyDiv}>
-                <div className={styles.thirtyoneDiv}>
-                  <div className={styles.thirtytwoDiv}>
-                    <div className={styles.thirtythreeDiv}>
-                    </div>
-                    <div className={styles.thirtyfourDiv}>
-                    </div>
-                  </div>
-                  <div className={styles.thirtyfiveDiv}>
-                    Hanin Linah Al Zaid</div>
-                  <div className={styles.thirtysixDiv}>
-                    CRM Technical Consultant</div>
-                  <div className={styles.thirtysevenDiv}>
-                    <div className={styles.thirtyeightDiv}>
-                      Send Wish</div>
-                    <div className={styles.thirtynineDiv}>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.fourtyDiv}>
-                  <div className={styles.fourtyoneDiv}>
-                    <div className={styles.fourtytwoDiv}>
-                    </div>
-                    <div className={styles.fourtythreeDiv}>
-                    </div>
+              <div className={styles.twentyfourDiv}>
+                <div className={styles.twentysixDiv}>
+                  <Carousel indicators={false}>
+                    {
+                      !this.state.loading && this.state.renderData.map((cItem: UserMaster[]) => {
+                        return (<Carousel.Item>
+                          {
+                            cItem.map(x => {
+                              return (
+                                <div className={styles.thirtyoneDiv}>
+                                  <div className={styles.thirtytwoDiv}>
+                                    <div className={styles.thirtythreeDiv}>
+                                    </div>
+                                    <div className={styles.thirtyfourDiv}>
+                                      <img className={styles.profile} src={`/_layouts/15/userphoto.aspx?size=L&accountname=${x?.UserEmail}`} />
+                                    </div>
+                                  </div>
+                                  <div className={styles.thirtyfiveDiv}>
+                                    {x.UserFullName}</div>
+                                  <div className={styles.thirtysixDiv}>
+                                    {x.JobTitle}</div>
+                                  <div className={styles.thirtysevenDiv}>
+                                    <div className={styles.thirtyeightDiv}>
+                                      Send Wish</div>
+                                  </div>
+                                </div>
+                              )
+                            })
+                          }
+                        </Carousel.Item>
 
+                        )
+                      })
+                    }
+                  </Carousel>
+                </div>
+                <div className={styles.sixtytwoDiv}>
+                  <span className={styles.sixtythreeDiv}>Stay</span>
+                  <span className={styles.sixtyfourDiv}>
+                    Connected</span>
+                </div>
+                <div className={styles.sixtysixDiv}>
+                  <div className={styles.sixtysevenDiv}>
+                    <div className={styles.sixtynineDiv} id='BirthDays' onClick={() => {
+                      this.ShowSlide('BirthDays', 'BirthDays', ['WorkAnniverSary', 'NewJoiners'])
+                    }}>
+                      Birthdays
+                    </div>
+                  </div>
+                  <div className={styles.seventyDiv}>
 
+                    <div className={styles.seventyfourDiv} id='WorkAnniverSary' onClick={() => {
+                      this.ShowSlide('WorkAnniverSary', 'WorkAnniverSary', ['BirthDays', 'NewJoiners'])
+                    }}>
+                      Work Anniversaries</div>
                   </div>
-                  <div className={styles.fourtyfourDiv}>
-                    Mahbub Nashwan</div>
-                  <div className={styles.fourtyfiveDiv}>
-                    CRM Technical Consultant</div>
-                  <div className={styles.fourtysixDiv}>
-                    <div className={styles.fourtysevenDiv}>
-                      Send Wish</div>
-                    <div className={styles.fourtyeightDiv}>
-                    </div>
+                  <div className={styles.seventyfiveDiv}>
+                    <div className={styles.eightyoneDiv} id='NewJoiners' onClick={() => {
+                      this.ShowSlide('NewJoiners', 'NewJoiners', ['BirthDays', 'WorkAnniverSary'])
+                    }}>
+                      New Joiners</div>
                   </div>
-                </div>
-                <div className={styles.fourtynineDiv}>
-                  <div className={styles.fiftyDiv}>
-                    <div className={styles.fiftyoneDiv}>
-                    </div>
-                    <div className={styles.fiftytwoDiv}>
-                    </div>
-
-                  </div>
-                  <div className={styles.fiftythreeDiv}>
-                    Mahbub Nashwan</div>
-                  <div className={styles.fiftyfourDiv}>
-                    CRM Technical Consultant</div>
-                  <div className={styles.fiftyfiveDiv}>
-                    <div className={styles.fiftysixDiv}>
-                      Send Wish</div>
-                    <div className={styles.fiftysevenDiv}>
-                    </div>
+                  <div className={styles.eightytwoDiv}>
+                    <div className={styles.eightyfourDiv}>
+                      Others</div>
                   </div>
                 </div>
-              </div>
-              <div className={styles.fiftyeightDiv}>
-                <div className={styles.sixtyDiv}>
+                <div className={styles.eightyfiveDiv}>
+                  <div className={styles.eightysixDiv}>
+                    Share your happiness </div>
+                  <div className={styles.eightysevenDiv}>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className={styles.sixtytwoDiv}>
-              <span className={styles.sixtythreeDiv}>Stay</span>
-              <span className={styles.sixtyfourDiv}>
-                Connected</span></div>
-            <div className={styles.sixtyfiveDiv}></div>
-            <div className={styles.sixtysixDiv}>
-              <div className={styles.sixtysevenDiv}>
-                <div className={styles.sixtynineDiv}>
-                  Birthdays</div>
-              </div>
-              <div className={styles.seventyDiv}>
-                
-                <div className={styles.seventyfourDiv}>
-                  Work Anniversaries</div>
-              </div>
-              <div className={styles.seventyfiveDiv}>
-                
-                <div className={styles.eightyoneDiv}>
-                  New Joiners</div>
-              </div>
-              <div className={styles.eightytwoDiv}>
-                <div className={styles.eightyfourDiv}>
-                  Others</div>
-              </div>
-            </div>
-            <div className={styles.eightyfiveDiv}>
-              <div className={styles.eightysixDiv}>
-                Share your happiness </div>
-              <div className={styles.eightysevenDiv}>
               </div>
             </div>
           </div>
-        </div>
+        }
       </section>
     );
   }
